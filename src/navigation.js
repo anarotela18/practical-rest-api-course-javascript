@@ -30,6 +30,8 @@ function navigator(){
   }else{
     homePage();
   }
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 }
 function homePage(){
   console.log("HOME!!");
@@ -68,6 +70,8 @@ function categoriesPage(){
 
   const [_,categoryData] = location.hash.split('=') // ["#category","id-name"];
   const [categoryId, categoryName] = categoryData.split('-');
+
+  headerCategoryTitle.innerHTML = categoryName;
   
   getMoviesByCategory(categoryId);
 }

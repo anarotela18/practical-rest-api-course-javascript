@@ -182,7 +182,6 @@ footer {
 
 .movie-btn::before {
     content: '🤍';
-    /* font-size: 13px; */
 }
 
 .movie-btn--liked {

@@ -1,3 +1,4 @@
+// Data
 const api = axios.create({
   baseURL: 'https://api.themoviedb.org/3/',
   headers: {
@@ -9,6 +10,30 @@ const api = axios.create({
 });
 const IMG_PREVIEW = 'http://image.tmdb.org/t/p/w300';
 
+function likedMoviesList(){
+  const item = JSON.parse(localStorage.getItem("liked_movies"));
+  let movies;
+
+  if(item){
+    movies = item;
+  
+  }else{
+    movies = {};
+  }
+  return movies;
+}
+function likeMovie(movie){
+ const likedMovies = likedMoviesList();
+
+ if(likedMovies[movie.id]){
+    likedMovies[movie.id] = undefined;
+ }else{
+    likedMovies[movie.id] = movie;
+ }
+
+ localStorage.setItem('liked_movies', JSON.stringify(likedMovies));
+}
+// Utils
 const lazyLoader = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     // console.log(entry);
@@ -20,7 +45,6 @@ const lazyLoader = new IntersectionObserver((entries) => {
   });
 });
 
-// Utils
 function createMovies(
   movies, 
   containerToCreateMovie, 
@@ -53,14 +77,17 @@ function createMovies(
     }
 
     movieImg.addEventListener('error',() =>{
-      //console.log('No cargo esta imagen ');
       movieImg.setAttribute('src','https://static.platzi.com/static/images/error/img404.png');
     });
 
     const movieBtn = document.createElement('button');
     movieBtn.classList.add('movie-btn');
+    
+    likedMoviesList()[movie.id] && movieBtn.classList.add('movie-btn--liked');
+
     movieBtn.addEventListener('click',()=>{
       movieBtn.classList.toggle('movie-btn--liked');
+      likeMovie(movie);
     });
 
 
@@ -213,4 +240,16 @@ async function getRelatedMoviesId(id){
   const relatedMovies = data.results;
 
   createMovies(relatedMovies, relatedMoviesContainer);
+}
+function getLikedMovies(){
+  const likedMovies = likedMoviesList();
+  const moviesArray = Object.values(likedMovies);
+  
+  createMovies(moviesArray, likedMoviesListArticle, {
+    lazyLoad: true,
+    clean: true,
+  });
+  
+  console.log(likedMovies);
+
 }

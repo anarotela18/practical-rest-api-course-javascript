@@ -1,0 +1,19 @@
+@media screen and (max-width: 992px) {
+    .genericList-container .movie-container {
+        width: 47.5%;
+    }
+        .movieDetail-container .category-container{
+            width: 20%;
+        }
+}
+
+@media screen and (max-width: 500px) {
+    .category-container,
+    .movieDetail-container .category-container {
+        width: 50%;
+    }
+    .genericList-container .movie-container,
+    .genericList-container .movie-img {
+        height: 250px;
+    }
+}

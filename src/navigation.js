@@ -2,28 +2,38 @@ let maxPage;
 let page = 1;
 let infiniteScroll;
 
-searchFormBtn.addEventListener("click", () => {
-  location.hash = "#search=" + searchFormInput.value;
+searchFormBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (searchFormInput.value === "") {
+    searchMessage.classList.remove("inactive");
+    searchMessage.classList.add('mt-3');
+    searchMessage.innerText = "Ingrese el nombre de la película para buscar";
+    headerSection.append(searchMessage);
+  }else{
+    searchMessage.innerText = "";
+    searchMessage.classList.add('inactive');
+    location.hash = "#search=" + searchFormInput.value;
+  }
 });
 trendingBtn.addEventListener("click", () => {
   location.hash = "#trends";
 });
 arrowBtn.addEventListener("click", () => {
   history.back();
-  //location.hash="#home";
 });
 
-window.addEventListener("DOMContentLoaded", navigator, false);
-window.addEventListener("hashchange", navigator, false);
+window.addEventListener("DOMContentLoaded", navigatorFunction, false);
+window.addEventListener("hashchange", navigatorFunction, false);
 window.addEventListener("scroll", infiniteScroll, { passive: false });
 
-function navigator() {
+function navigatorFunction() {
+  searchMessage.innerText = "";
+  searchMessage.classList.add("inactive");
 
   if(infiniteScroll){
     window.removeEventListener('scroll',infiniteScroll,{passive:false});
     infiniteScroll = undefined;
   }
-
 
   if (location.hash.startsWith("#trends")) {
     trendsPage();
@@ -34,6 +44,7 @@ function navigator() {
   } else if (location.hash.startsWith("#category=")) {
     categoriesPage();
   } else {
+    searchFormInput.value = "";
     homePage();
   }
   document.body.scrollTop = 0;
@@ -114,8 +125,7 @@ function movieDetailsPage() {
   getMovieById(movieId);
 }
 function searchPage() {
-  console.log("SEARCH!!");
-
+  console.log("SEARCH333!!");
   headerSection.classList.remove("header-container--long");
   headerSection.style.background = "";
   arrowBtn.classList.remove("inactive");
@@ -133,7 +143,6 @@ function searchPage() {
 
   const [_, query] = location.hash.split("="); // ["#search","platzi"];
   getMoviesBySearch(query);
-
   infiniteScroll = getPaginatedMoviesBySearch(query);
 }
 function trendsPage() {

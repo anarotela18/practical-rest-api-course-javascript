@@ -9,101 +9,110 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@700;800&family=Red+Hat+Display:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="./styles/app.css" />
+  <link rel="stylesheet" href="./styles/responsive.css" />
 
   <title>PlatziMovies</title>
 </head>
 <body>
-  <header id="header" class="header-container">
-    <span class="header-arrow inactive">&lt;</span>
-    <h1 class="header-title">PlatziMovies</h1>
-    <h1 class="header-title header-title--categoryView inactive">Acción</h1>
+  <div class="container">
+    <header id="header" class="header-container">
+      <span class="header-arrow inactive">&lt;</span>
+      <h1 class="header-title">PlatziMovies</h1>
+      <button id="toggle-theme-btn" class="btn btn-outline-secondary">
+        <i id="theme-icon" class="bi bi-moon-fill text-primary"></i>
+      </button>
+      <h1 class="header-title header-title--categoryView inactive">Acción</h1>
 
-    <form id="searchForm" class="header-searchForm">
-      <input type="text" placeholder="Vengadores" />
-      <button id="searchBtn">🔍</button>
-    </form>
-  </header>
+      <form id="searchForm" class="header-searchForm">
+        <input type="text" placeholder="Vengadores" />
+        <button id="searchBtn">🔍</button>
+      </form>
+    </header>
 
-  <section id="trendingPreview" class="trendingPreview-container">
-    <div class="trendingPreview-header">
-      <h2 class="trendingPreview-title">Tendencias</h2>
-      <button class="trendingPreview-btn">Ver más</button>
-    </div>
-
-    <article class="trendingPreview-movieList">
-      <div class="movie-container movie-container--loading"></div>
-      <div class="movie-container movie-container--loading"></div>
-      <div class="movie-container movie-container--loading"></div>
-      <!--       
-      <div class="movie-container movie-container--loading">
-        <img src="" alt="nombre de la pelicula" class="movie-img">
-      </div> 
-      -->
-    </article>
-  </section>
-
-  <section id="categoriesPreview" class="categoriesPreview-container">
-    <h2 class="categoriesPreview-title">Categorías</h2>
-
-    <article class="categoriesPreview-list">
-      <div class="category-container category-container--loading"></div>
-      <div class="category-container category-container--loading"></div>
-      <div class="category-container category-container--loading">
-        <!-- <h3 id="id28" class="category-title">Romance</h3> -->
-      </div> 
-    </article>
-
-  </section>
-
-  <section id="liked" class="liked-container">
-    <div class="liked-header">
-      <h2 class="liked-title">Películas favoritas</h2>
-    </div>
-
-    <article class="liked-movieList">
-      <div class="movie-container movie-container--loading">
-          <img src="" alt="imagen" class="movie-img">
+    <section id="trendingPreview" class="trendingPreview-container">
+      <div class="trendingPreview-header">
+        <h2 class="trendingPreview-title">Tendencias</h2>
+        <button class="trendingPreview-btn">Ver más</button>
       </div>
-    </article>
-  </section>
 
-  <section id="genericList" class="genericList-container inactive">
-    <div class="movie-container movie-container--loading"></div>
-    <div class="movie-container movie-container--loading"></div>
-    <div class="movie-container movie-container--loading"></div>
-  </section>
-
-  <section id="movieDetail" class="movieDetail-container inactive">
-    <h1 class="movieDetail-title"></h1>
-    <span class="movieDetail-score"></span>
-    <p class="movieDetail-description"></p>
-  
-    <article class="categories-list">
-      <div class="category-container category-container--loading"></div>
-      <div class="category-container category-container--loading"></div>
-      <div class="category-container category-container--loading">
-        <!-- <h3 id="id28" class="category-title">Romance</h3> -->
-      </div>
-    </article>
-  
-    <article class="relatedMovies-container">
-      <h2 class="relatedMovies-title">Películas similares</h2>
-
-      <div class="relatedMovies-scrollContainer">
+      <article class="trendingPreview-movieList">
         <div class="movie-container movie-container--loading"></div>
         <div class="movie-container movie-container--loading"></div>
+        <div class="movie-container movie-container--loading"></div>
+        <!--       
         <div class="movie-container movie-container--loading">
+          <img src="" alt="nombre de la pelicula" class="movie-img">
+        </div> 
+        -->
+      </article>
+    </section>
+
+    <section id="categoriesPreview" class="categoriesPreview-container">
+      <h2 class="categoriesPreview-title">Categorías</h2>
+
+      <article class="categoriesPreview-list">
+        <div class="category-container category-container--loading"></div>
+        <div class="category-container category-container--loading"></div>
+        <div class="category-container category-container--loading">
+          <!-- <h3 id="id28" class="category-title">Romance</h3> -->
+        </div> 
+      </article>
+
+    </section>
+
+    <section id="liked" class="liked-container">
+      <div class="liked-header">
+        <h2 class="liked-title">Películas favoritas</h2>
+      </div>
+
+      <article class="liked-movieList">
+        <div class="movie-container movie-container--loading"></div>
+      <div class="movie-container movie-container--loading"></div>
+      <div class="movie-container movie-container--loading"></div>
+      </article>
+    </section>
+
+    <section id="genericList" class="genericList-container inactive">
+      <div class="movie-container movie-container--loading"></div>
+      <div class="movie-container movie-container--loading"></div>
+      <div class="movie-container movie-container--loading"></div>
+    </section>
+
+    <section id="movieDetail" class="movieDetail-container inactive">
+      <h1 class="movieDetail-title"></h1>
+      <span class="movieDetail-score"></span>
+      <p class="movieDetail-description"></p>
+    
+      <article class="categories-list">
+        <div class="category-container category-container--loading"></div>
+        <div class="category-container category-container--loading"></div>
+        <div class="category-container category-container--loading">
           <!-- <h3 id="id28" class="category-title">Romance</h3> -->
         </div>
-      </div>
+      </article>
+    
+      <article class="relatedMovies-container">
+        <h2 class="relatedMovies-title">Películas similares</h2>
 
-    </article>
-  </section>
-  
+        <div class="relatedMovies-scrollContainer">
+          <div class="movie-container movie-container--loading"></div>
+          <div class="movie-container movie-container--loading"></div>
+          <div class="movie-container movie-container--loading">
+            <!-- <h3 id="id28" class="category-title">Romance</h3> -->
+          </div>
+        </div>
+
+      </article>
+    </section>
+    
+  </div>
 
   <footer>Hecho con amor en Platzi por @anarotela18</footer>
   
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="./src/secrets.js"></script>
   <script src="./src/nodes.js"></script>

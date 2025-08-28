@@ -13,6 +13,7 @@ const categoriesPreviewList = document.querySelector(".categoriesPreview-list");
 const movieDetailCategoriesList = document.querySelector("#movieDetail .categories-list");
 const relatedMoviesContainer = document.querySelector(".relatedMovies-scrollContainer");
 const likedMoviesListArticle = document.querySelector('.liked-movieList');
+const likedMoviesMessage = document.createElement("p");
 
 // Elements
 const headerTitle = document.querySelector(".header-title");
@@ -21,6 +22,7 @@ const headerCategoryTitle = document.querySelector(".header-title--categoryView"
 
 const searchFormInput = document.querySelector("#searchForm input");
 const searchFormBtn = document.querySelector("#searchBtn");
+const searchMessage = document.createElement("p");
 
 const trendingBtn = document.querySelector(".trendingPreview-btn");
 
